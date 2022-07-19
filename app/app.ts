@@ -1,9 +1,11 @@
-import * as model from "./model.js";
+import {randomRecipe, ID} from "./model.js";
 
 function main() {
-    let tools = [699, 700, 701, 702, 703];
-    let id = model.randomCraftableItem();
-    console.log(id);
+    let recipes = randomRecipe();
+    for (let i = 0; i < recipes.length; i++) {
+        console.log(recipes[i])
+    }
+    return;
 }
 
 main();

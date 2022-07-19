@@ -1,12 +1,12 @@
 const MCData = require("minecraft-data")("1.18.2");
 
-type ID = number;
+export type ID = number;
 
 const ID_MIN = 0;
 const ID_MAX = 1101;
 
 function isCraftable(id : ID) : Boolean {
-    return MCData.recipes[id] !== undefined;
+    return MCData.recipes[id] != undefined;
 }
 
 function randomID() : ID {
@@ -14,7 +14,13 @@ function randomID() : ID {
 }
 
 export function randomCraftableItem() : ID  {
-    let id: ID;
-    do { id = randomID(); } while (isCraftable(id));
+    let id : ID;
+    do { id = randomID(); } while (!isCraftable(id));
     return id;
+}
+
+export function randomRecipe() {
+    let rand_id: ID = randomCraftableItem();
+    console.log(rand_id);
+    return MCData.recipes[rand_id];
 }
